@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color:  #a3a125;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,3 +24,13 @@
   color: white;
 }
 
+.App-header h1 {
+  text-decoration: double;
+  color: rgb(89, 154, 207);
+}
+.button {
+  background-color: aqua;
+  color: red;
+  border-color: aliceblue;
+  
+}
