@@ -1,14 +1,10 @@
 import React from 'react'
-// import Football from './codes/Onclick/Onclick'
-// import Form from './codes/Onclick/Onclick1'
-import Onclick2 from './codes/Onclick/Onclick2'
+import ExpenseApp from './codes/25May/ExpenseApp'
 
 const App = () => {
   return (
     <div>
-      {/* <Football />
-      <Form /> */}
-      <Onclick2/>
+      <ExpenseApp />
     </div>
   )
 }
