@@ -6,10 +6,10 @@ import Formapp from './codes/25May1.js/Formapp'
 const App = () => {
   return (
     <div>
-     {/* <ExpenseApp /> */}
-     <Formapp />
+     <ExpenseApp />
+     {/* <Formapp /> */}
     </div>
   )
 }
 
-export default App
+export default App;

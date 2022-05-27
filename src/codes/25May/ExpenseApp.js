@@ -1,23 +1,28 @@
 import React from "react";
-import ExpenseItems from "./ExpenseItems";
+// import ExpenseItems from "./ExpenseItems";
 
 function ExpenseApp() {
   const expenses = [
     {
-      id: "e1",
+      id: "1",
       title: "Toilet Paper",
       amount: 94.12,
       date: new Date(2020, 7, 14),
     },
-    { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
     {
-      id: "e3",
+      id: "2",
+      title: "New TV",
+      amount: 799.49,
+      date: new Date(2021, 2, 12),
+    },
+    {
+      id: "3",
       title: "Car Insurance",
       amount: 294.67,
       date: new Date(2021, 2, 28),
     },
     {
-      id: "e4",
+      id: "4",
       title: "New Desk (Wooden)",
       amount: 450,
       date: new Date(2021, 5, 12),
@@ -27,7 +32,14 @@ function ExpenseApp() {
   return (
     <div>
       <h1> Let's Started</h1>
-      <ExpenseItems
+      
+      {expenses.map((expense) => (
+        <li key={expense.id}>
+          {expense.title} {expense.amount}
+        </li>
+      ))}
+
+      {/* <ExpenseItems
         title={expenses[0].title}
         amount={expenses[0].amount}
         date={expenses[0].date}
@@ -46,7 +58,7 @@ function ExpenseApp() {
         title={expenses[3].title}
         amount={expenses[3].amount}
         date={expenses[3].date}
-      />
+      /> */}
     </div>
   );
 }
