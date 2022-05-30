@@ -28,25 +28,26 @@ function ExpenseApp() {
       date: new Date(2021, 5, 12),
     },
   ];
-  
+
   const filtered = expenses.filter((item) => {
-    return (
-      item.amount > 200
-    )
-   })
-   console.log(filtered)
+    return item.amount > 200;
+  });
 
   return (
     <div>
       <h1> Let's Started</h1>
-     
-      <div>
-        {expenses.map((expense) => (
-          <li key={expense.id}>
-            {expense.title} {expense.amount}
-          </li>
-        ))}
-      </div>
+    {/* filtered topic syntax  */}
+      {filtered.map((names) => {
+        return (
+          <ExpenseItems
+            title={names.title}
+            amount={names.amount}
+            date={names.date}
+          />
+        );
+      })}
+{/* // map function syntax */}
+
       {expenses.map((items) => {
         return (
           <ExpenseItems
@@ -56,8 +57,6 @@ function ExpenseApp() {
           />
         );
       })}
-
-      
     </div>
   );
 }
