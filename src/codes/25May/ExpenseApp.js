@@ -1,4 +1,5 @@
 import React from "react";
+import ReactTable from "react-table";  
 import ExpenseItems from "./ExpenseItems";
 
 function ExpenseApp() {
@@ -28,6 +29,13 @@ function ExpenseApp() {
       date: new Date(2021, 5, 12),
     },
   ];
+  const columns = [{  
+    Header: 'Title',  
+    accessor: 'title'  
+    },{  
+    Header: 'Amount',  
+    accessor: 'amount'  
+    }]  
 
   const filtered = expenses.filter((item) => {
     return item.amount > 200;
@@ -39,22 +47,25 @@ function ExpenseApp() {
     {/* filtered topic syntax  */}
       {filtered.map((names) => {
         return (
+          
           <ExpenseItems
-            title={names.title}
-            amount={names.amount}
-            date={names.date}
-          />
+              title={names.title}
+              amount={names.amount}
+              date={names.date} />
         );
       })}
 {/* // map function syntax */}
 
       {expenses.map((items) => {
         return (
+          
+          
           <ExpenseItems
             title={items.title}
             amount={items.amount}
             date={items.date}
           />
+      
         );
       })}
     </div>
