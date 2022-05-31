@@ -31,11 +31,12 @@ const Radios = () => {
       <div>
         {data.map((name) => (
           <>
-            <input type="checkbox" value={name} />
+            <input type="checkbox" value={name} onChange={changeHandler}/>
 
             <b>{name}</b>
           </>
         ))}
+        <h2>{text}</h2>
       </div>
     </div>
   );
