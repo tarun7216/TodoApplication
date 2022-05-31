@@ -1,4 +1,5 @@
 import React from "react";
+import Radios from "./button/Radios";
 import Demo2 from "./Tables/Demo2";
 // import Third from "./Events/Third";
 // import Items from './29May/Items'
@@ -25,7 +26,9 @@ const App = () => {
         {/* <Third />
         <Demo1 /> */}
         <Demo2 />
+        
       </center>
+      <Radios />
     </div>
   );
 };
