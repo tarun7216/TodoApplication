@@ -24,3 +24,29 @@
   border-color: aliceblue;
   
 }
+
+.tablecn {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+table{
+  border: 2px solid gold;
+}
+th {
+  border-bottom:  2px;
+}
+input[type="submit"]{
+  background-color: #f8f401;
+  padding: 0px 10px 0px 10px;
+}
+input[type="text"]{
+  background-color: rgb(222, 247, 238);
+}
+button{
+  background-color: red;
+  padding: 2px;
+  border-radius: 5px;
+  
+  color: white;
+}
