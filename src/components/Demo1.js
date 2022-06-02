@@ -1,29 +1,25 @@
 import React, { useState } from "react";
 import DemoList from "./DemoList";
 import "../App.css";
-import Submit from "./Submit";
+
 
 const Demo2 = () => {
-  const genderdata = ["Male", "Female", "Others"]
+  const genderdata = ["Male", "Female", "Others"];
   const [gender, setGender] = useState("");
   const handlerChange = (e) => {
-    setGender(e.target.value)
-
-  }
-  
-
-  
+    setGender(e.target.value);
+  };
  
+
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [gmail, setGmail] = useState("");
   const [msg, setMsg] = useState("");
   const [list, setList] = useState([]);
-  const [accepted,setAccepted] = useState(false);
+  const [accepted, setAccepted] = useState(false);
   const submitHandler1 = (e) => {
-      setAccepted(!accepted);
-      
-  }
+    setAccepted(!accepted);
+  };
   console.log(accepted);
   const changeHandler = (e) => {
     setFName(e.target.value);
@@ -40,21 +36,34 @@ const Demo2 = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     const data = {
-      firstName :fName,
-      lastName : lName,
-      eMail : gmail,
-      textMessage : msg,
-      Sex : gender
-
-    }
+      firstName: fName,
+      lastName: lName,
+      eMail: gmail,
+      textMessage: msg,
+      Sex: gender,
+      accepted: accepted,
+    };
     console.log(data);
-  //   const newList = [fName, lName, gmail,msg];
-  //   setList(newList);
-  //   setTask("");
+    const newList = [...list,data];
+    setList(newList);
+    setFName("");
+    setLName("");
+    setGmail("");
+    setMsg("");
+    setGender("");
+    setAccepted(true);
   };
+  const deleteHandler =(keyValue)=> {
+    const newList = list.filter((lists,key) => key !== keyValue);
+    setList(newList);
+  }
+  const editHandler = (keyValue) => {
+    const editList = list.filter((lists,key) => key = keyValue);
+    setList (editList);
+  }
 
   return (
-    <div>
+    <div >
       <center>
         <div>
           <form onSubmit={submitHandler}>
@@ -66,7 +75,8 @@ const Demo2 = () => {
                 value={fName}
                 onChange={changeHandler}
               />
-            </label><br/>
+            </label>
+            <br />
             <label>
               LastName:
               <input
@@ -75,7 +85,8 @@ const Demo2 = () => {
                 value={lName}
                 onChange={changeHandler1}
               />
-            </label><br/>
+            </label>
+            <br />
             <label>
               Email:
               <input
@@ -84,7 +95,8 @@ const Demo2 = () => {
                 value={gmail}
                 onChange={changeHandler2}
               />
-            </label><br/>
+            </label>
+            <br />
             <label>
               Message:
               <textarea
@@ -93,26 +105,33 @@ const Demo2 = () => {
                 value={msg}
                 onChange={changeHandler3}
               />
-            </label><br/>
+            </label>
+            <br />
             <label>
               gender:
-             {genderdata.map((text) => ( <><input type="radio" value={text} name="gender" onChange={handlerChange} />
-             <b>{text}</b>
-             </>))}
-            
+              {genderdata.map((text) => (
+                <>
+                  <input
+                    type="radio"
+                    value={text}
+                    name="gender"
+                    onChange={handlerChange}
+                  />
+                  <b>{text}</b>
+                </>
+              ))}
             </label>
-            <br/>
-            <input type="checkbox" value={accepted} onClick={submitHandler1}/>
-                 If I tick checkbox submit button should Enable.
-
-            <br/>
-            <button disabled={!accepted}>Submit</button>
+            <br />
+            <input type="checkbox" value={accepted} onClick={submitHandler1} />
+            If I tick checkbox submit button should Enable.
+            <br />
+            <button disabled={!accepted} >Submit</button>
           </form>
         </div>
         <span></span>
-        <DemoList datalist={list} />
-        
+        <DemoList datalist={list} editHandler={editHandler} deleteHandler={deleteHandler}/>
       </center>
+      
     </div>
   );
 };
