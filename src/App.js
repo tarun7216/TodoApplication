@@ -1,8 +1,10 @@
 import React from "react";
-import Contact from "./components/Contact";
+
 import "./App.css";
-import Contactus from "./components/Contactus";
-import Demo2 from "./components/Demo1";
+
+
+import Demo1 from "./components/Demo1";
+import Edited from "./components/Editable";
 
 const App = () => {
   return (
@@ -10,7 +12,8 @@ const App = () => {
       <h1> Contact Us from</h1>
       {/* <Contact />
       <Contactus /> */}
-      <Demo2 />
+      <Demo1 />
+     
     </div>
   );
 };

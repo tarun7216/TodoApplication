@@ -1,27 +1,21 @@
 import React, { useState } from "react";
-import DemoList from "./DemoList";
 import "../App.css";
-import ReactDOM from 'react-dom';  
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 
 
-
-const Demo1 = ({firstName}) => {
+const Editable = ({firstName, lastName,eMail,textMessage,Sex}) => {
   const genderdata = ["Male", "Female", "Others"];
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState(Sex ? Sex : "");
   const handlerChange = (e) => {
     setGender(e.target.value);
   };
 
   const [fName, setFName] = useState(firstName ? firstName: "" );
-  const [lName, setLName] = useState("");
-  const [gmail, setGmail] = useState("");
-  const [msg, setMsg] = useState("");
+  const [lName, setLName] = useState(lastName ? lastName: "");
+  const [gmail, setGmail] = useState(eMail ? eMail: "");
+  const [msg, setMsg] = useState(textMessage ? textMessage: "");
   const [list, setList] = useState([]);
   const [accepted, setAccepted] = useState(false);
-  const submitHandler1 = (e) => {
-    setAccepted(!accepted);
-  };
+  
   console.log(accepted);
   const changeHandler = (e) => {
     setFName(e.target.value);
@@ -35,7 +29,7 @@ const Demo1 = ({firstName}) => {
   const changeHandler3 = (e) => {
     setMsg(e.target.value);
   };
-  const submitHandler = (e) => {
+  const saveHandler = (e) => {
     e.preventDefault();
     const data = {
       firstName: fName,
@@ -46,26 +40,15 @@ const Demo1 = ({firstName}) => {
       accepted: accepted,
     };
     console.log(data);
-    const newList = [...list, data];
-    setList(newList);
-    setFName("");
-    setLName("");
-    setGmail("");
-    setMsg("");
-    setGender("");
-    setAccepted(true);
+    const editList = [...list, data];
+    setList(editList);
   };
-  const deleteHandler = (keyValue) => {
-    const newList = list.filter((lists, key) => key !== keyValue);
-    setList(newList);
-  };
-
 
   return (
     <div>
       <center>
         <div>
-          <form onSubmit={submitHandler}>
+          <form onSubmit={saveHandler}>
             <table>
               <thead>
                 <tr>
@@ -134,18 +117,12 @@ const Demo1 = ({firstName}) => {
                 </tr>
               </tbody>
             </table>
-            <input type="checkbox" value={accepted} onClick={submitHandler1} />
-            If I tick checkbox submit button should Enable.
-            <br />
-            <button disabled={!accepted}>Submit</button>
+            <button>Save</button>
           </form>
-        </div>
-        <span></span>
-        <DemoList datalist={list} deleteHandler={deleteHandler} />
-        
+        </div>  
       </center>
     </div>
   );
 };
 
-export default Demo1;
+export default Editable;
