@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import "../App.css";
 
 
-const Editable = ({firstName, lastName,eMail,textMessage,Sex}) => {
+const Editable = ({firstName, lastName,eMail,textMessage,Sex, isEdit,id}) => {
   const genderdata = ["Male", "Female", "Others"];
   const [gender, setGender] = useState(Sex ? Sex : "");
   const handlerChange = (e) => {
     setGender(e.target.value);
   };
 
+  
   const [fName, setFName] = useState(firstName ? firstName: "" );
   const [lName, setLName] = useState(lastName ? lastName: "");
   const [gmail, setGmail] = useState(eMail ? eMail: "");
   const [msg, setMsg] = useState(textMessage ? textMessage: "");
-  const [list, setList] = useState([]);
-  const [accepted, setAccepted] = useState(false);
+  const [editlist, setEditList] = useState([]);
+
   
-  console.log(accepted);
+ 
   const changeHandler = (e) => {
     setFName(e.target.value);
   };
@@ -29,20 +30,53 @@ const Editable = ({firstName, lastName,eMail,textMessage,Sex}) => {
   const changeHandler3 = (e) => {
     setMsg(e.target.value);
   };
+
+
   const saveHandler = (e) => {
+
     e.preventDefault();
-    const data = {
-      firstName: fName,
-      lastName: lName,
-      eMail: gmail,
-      textMessage: msg,
-      Sex: gender,
-      accepted: accepted,
-    };
-    console.log(data);
-    const editList = [...list, data];
-    setList(editList);
+    if (isEdit) {
+      const data = {
+        firstName: fName,
+        lastName: lName,
+        eMail: gmail,
+        textMessage: msg,
+        Sex: gender,
+        
+      };
+      console.log(data);
+
+      const result = editlist.map((item,) => {
+        if (item.id === id) {
+          return ({
+            ...item, firstName: fName, lastName: lName,eMail: gmail, textMessage: msg, Sex: gender
+          })
+        }
+        else{
+          return (item)
+        }
+
+      })
+      console.log(result);
+      setEditList(result);
+    }
+    else {
+      const data1 = {
+        id: Number(new date),
+        firstName: fName,
+        lastName: lName,
+        eMail: gmail,
+        textMessage: msg,
+        Sex: gender,
+        
+      };
+      console.log(data1);
+      const editList = [editlist];
+      setEditList(editList);
+
+    }
   };
+    
 
   return (
     <div>

@@ -1,31 +1,16 @@
 import React, { useState } from "react";
-import DemoList from "./DemoList";
-import "../App.css";
-import {nanoid} from 'nanoid';
 
-const Demo1 = ({ firstName}) => {
+import "../App.css";
+import TableView from "./TableView";
+
+const InputForm = ({ firstName }) => {
   const genderdata = ["Male", "Female", "Others"];
   const [gender, setGender] = useState("");
   const handlerChange = (e) => {
     setGender(e.target.value);
   };
-  
-  // const [inputdata,setInputdata] = useState({
-  //   fName: "",
-  //   lName:"",
-  //   eMail:"",
-  //   msg:"",
-  //   gender:""
 
-  // })
-  // const onChangeHandler = (key) = (e, key) => {
-  //   setInputdata({
-  //     ...inputdata,
-  //     [key]: e.target.value,
-  //   });
-  //   console.log(inputdata);
-  // };
-  const [fName, setFName] = useState(firstName ? firstName : "");
+  const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [gmail, setGmail] = useState("");
   const [msg, setMsg] = useState("");
@@ -49,9 +34,7 @@ const Demo1 = ({ firstName}) => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-
     const data = {
-     
       firstName: fName,
       lastName: lName,
       eMail: gmail,
@@ -69,23 +52,15 @@ const Demo1 = ({ firstName}) => {
     setGender("");
     setAccepted(true);
   };
- 
-
- 
- 
-
   const deleteHandler = (keyValue) => {
     const newList = list.filter((lists, key) => key !== keyValue);
     setList(newList);
   };
 
-
-
   return (
     <div>
       <center>
-
-      <div>
+        <div>
           <form onSubmit={submitHandler}>
             <table>
               <thead>
@@ -160,11 +135,10 @@ const Demo1 = ({ firstName}) => {
           </form>
         </div>
         <span></span>
-        {/* <Inputdata /> */}
-        <DemoList datalist={list} deleteHandler={deleteHandler} />
+        <TableView datalist={list} deleteHandler={deleteHandler} />
       </center>
     </div>
   );
 };
 
-export default Demo1;
+export default InputForm;

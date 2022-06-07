@@ -2,18 +2,14 @@ import React from "react";
 
 import "./App.css";
 
-
-import Demo1 from "./components/Demo1";
-import Edited from "./components/Editable";
+import InputForm from "./Curd/InputForm";
 
 const App = () => {
   return (
     <div className="App">
       <h1> Contact Us from</h1>
-      {/* <Contact />
-      <Contactus /> */}
-      <Demo1 />
-     
+      
+     <InputForm />
     </div>
   );
 };
